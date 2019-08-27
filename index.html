@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Our Sool</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <p>admin이 로그인해야만 DB에서 생성/수정/삭제가 가능합니다.</p>
+      <p>DB 열람은 로그인하지 않아도 열람 가능합니다.</p>
+      <button class="btn btn-primary">열람하기</button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        data-toggle="modal"
+        data-target="#loginModal"
+      >
+        관리자 로그인
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">환영합니다!</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <button class="btn btn-outline-primary">구글 로그인</button>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                취소
+              </button>
+              <button type="button" class="btn btn-primary">
+                로그인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" hidden>
+      <div class="jumbotron">
+        <h1 class="display-5">술의 기본 정보</h1>
+        <fieldset>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <p>술의 이름</p>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input
+                      type="checkbox"
+                      aria-label="Checkbox for following text input"
+                    />
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="ko-KR"
+                  aria-label="Text input with checkbox"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input
+                      type="checkbox"
+                      aria-label="Checkbox for following text input"
+                    />
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="en-US"
+                  aria-label="Text input with checkbox"
+                />
+              </div>
+            </li>
+            <li class="list-group-item">
+              <p>술의 분류</p>
+              <select class="custom-select">
+                <option selected>선택하세요...</option>
+                <optgroup label="막걸리">
+                  <option>생 막걸리</option>
+                  <option>살균 막걸리</option>
+                </optgroup>
+                <optgroup label="위스키">
+                  <option>싱글몰트 위스키</option>
+                  <option>블렌디드 위스키</option>
+                </optgroup>
+              </select>
+            </li>
+            <li class="list-group-item">
+              <p>술의 도수</p>
+              <input class="form-control" placeholder="숫자로만 적어주세요" />
+            </li>
+            <li class="list-group-item">
+              <p>양조장</p>
+              <input class="form-control" />
+            </li>
+          </ul>
+        </fieldset>
+      </div>
+      <button type="button" class="btn btn-outline-primary btn-lg btn-block ">
+        저장하기
+      </button>
+    </div>
+  </body>
+</html>
