@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
     <title>Our Sool</title>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -20,7 +22,7 @@
     ></script>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="dvLoginSelect" style="display: none">
       <p>admin이 로그인해야만 DB에서 생성/수정/삭제가 가능합니다.</p>
       <p>DB 열람은 로그인하지 않아도 열람 가능합니다.</p>
       <button class="btn btn-primary">열람하기</button>
@@ -28,7 +30,7 @@
         type="button"
         class="btn btn-secondary"
         data-toggle="modal"
-        data-target="#loginModal"
+        data-target="#modalLogin"
       >
         관리자 로그인
       </button>
@@ -36,16 +38,16 @@
       <!-- Modal -->
       <div
         class="modal fade"
-        id="loginModal"
+        id="modalLogin"
         tabindex="-1"
         role="dialog"
-        aria-labelledby="loginModalLabel"
+        aria-labelledby="modalLoginLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="loginModalLabel">환영합니다!</h5>
+              <h5 class="modal-title" id="modalLoginLabel">환영합니다!</h5>
               <button
                 type="button"
                 class="close"
@@ -56,7 +58,9 @@
               </button>
             </div>
             <div class="modal-body">
-              <button class="btn btn-outline-primary">구글 로그인</button>
+              <button class="btn btn-outline-primary" id="googleBtn">
+                구글 로그인
+              </button>
             </div>
             <div class="modal-footer">
               <button
@@ -74,7 +78,7 @@
         </div>
       </div>
     </div>
-    <div class="container" hidden>
+    <div class="container" id="dvAlcAdder" style="display: none">
       <div class="jumbotron">
         <h1 class="display-5">술의 기본 정보</h1>
         <fieldset>
@@ -143,5 +147,29 @@
         저장하기
       </button>
     </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCBhQMEUD2TUVDAIj3lABaaku7iZoXvWJs",
+        authDomain: "oursool.firebaseapp.com",
+        databaseURL: "https://oursool.firebaseio.com",
+        projectId: "oursool",
+        storageBucket: "oursool.appspot.com",
+        messagingSenderId: "913956959710",
+        appId: "1:913956959710:web:20fb51b5b0298fbb"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="./js/firebaseMain.js"></script>
   </body>
 </html>
