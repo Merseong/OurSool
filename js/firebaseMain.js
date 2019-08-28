@@ -57,15 +57,3 @@ FirebaseMain.prototype.onGoogleBtnClick = function() {
             console.error("인증 상태 설정 중 에러 발생", error);
         });
 };
-
-document.addEventListener("DOMContentLoaded", function() {
-    window.fbMain = new FirebaseMain();
-
-    document.onkeydown = function(e) {
-        if (e.keyCode === 27 && confirm("LogOut?")) {
-            fbMain.auth.signOut();
-        }
-    };
-
-    console.log("done load");
-});
