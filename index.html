@@ -89,6 +89,7 @@
                   <div class="input-group-text">
                     <input
                       id="boxKrTitle"
+                      name="boxTitle"
                       type="checkbox"
                       aria-label="Checkbox for following text input"
                     />
@@ -96,6 +97,7 @@
                 </div>
                 <input
                   id="inputKrTitle"
+                  name="inputTitle"
                   type="text"
                   class="form-control"
                   placeholder="ko-KR"
@@ -107,6 +109,7 @@
                   <div class="input-group-text">
                     <input
                       id="boxEnTitle"
+                      name="boxTitle"
                       type="checkbox"
                       aria-label="Checkbox for following text input"
                     />
@@ -114,6 +117,7 @@
                 </div>
                 <input
                   id="inputEnTitle"
+                  name="inputTitle"
                   type="text"
                   class="form-control"
                   placeholder="en-US"
@@ -167,10 +171,12 @@
                         </div>
                         <div class="modal-body">
                           <input
+                            id="inputModalLarge"
                             class="form-control"
                             placeholder="large classify"
                           />
                           <input
+                            id="inputModalSmall"
                             class="form-control"
                             placeholder="small classify"
                           />
@@ -210,7 +216,11 @@
             </li>
             <li class="list-group-item">
               <p>양조장</p>
-              <input id="inputBrewery" class="form-control" />
+              <input
+                id="inputBrewery"
+                class="form-control"
+                placeholder="선택사항입니다"
+              />
             </li>
           </ul>
         </fieldset>

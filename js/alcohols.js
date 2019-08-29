@@ -3,6 +3,8 @@
  */
 var AlcoholCodes = AlcoholCodes || {};
 
+AlcoholCodes.alcoholListForTest = [];
+
 AlcoholCodes.breweryCodes = {
     "NO DATA": 0,
     이백집: 1
@@ -95,9 +97,11 @@ AlcoholFunction.getAlcoholCode = function(alc) {
     return output;
 };
 
-AlcoholFunction.parseAlcoholCode = function(alcCode) {
-    let output = 0;
+AlcoholFunction.parseAlcoholCode = function(alcCode, isLargeVal) {
+    var large = Math.round(alcCode / 1000);
+    var small = alcCode % 1000;
 
+    let output = isLargeVal ? large : small;
     return output;
 };
 
@@ -105,13 +109,16 @@ AlcoholFunction.parseAlcoholCode = function(alcCode) {
  *
  */
 class Alcohol {
-    constructor(_titles, _degree, _brewery, _classifyL, _classifyS) {
+    constructor(_titles, _degree, _brewery, _classify) {
         this.title = {};
         _titles.forEach(function(element) {
             this.addTitle(element.lang, element.title);
         }, this);
         this.degree = _degree;
         this.brewery = AlcoholFunction.getBreweryCode(_brewery);
+
+        let _classifyL = AlcoholFunction.parseAlcoholCode(_classify, true);
+        let _classifyS = AlcoholFunction.parseAlcoholCode(_classify, false);
         this.classifyLarge = _classifyL; // 00
         this.classifySmall = _classifyS; // 000
         this.classifyIndex = AlcoholFunction.addClassifyCount(
