@@ -81,8 +81,13 @@ uiController.prototype.onSaveBtnClicked = function() {
         }
     }
 
-    if (degree == 0 || !isTitled || code == 0) {
-        alert("모든 폼을 채워주시기 바랍니다.");
+    if (
+        degree.length == 0 ||
+        parseFloat(degree) === NaN ||
+        !isTitled ||
+        code == 0
+    ) {
+        alert("폼을 정확하게 채워주시기 바랍니다.");
         return;
     } else {
         if (AlcoholCodes.alcoholListForTest == undefined)
@@ -95,6 +100,14 @@ uiController.prototype.onSaveBtnClicked = function() {
                 AlcoholCodes.alcoholListForTest.length - 1
             ]
         );
+
+        // reset values
+        this.inputDegree.value = "";
+        this.inputBrewery.value = "";
+        inputTitles.forEach(function(element) {
+            element.value = "";
+        });
+        this.selectClassify.selectedIndex = 0;
     }
 };
 
