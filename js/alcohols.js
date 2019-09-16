@@ -5,10 +5,7 @@ var AlcoholCodes = AlcoholCodes || {};
 
 AlcoholCodes.alcoholListForTest = [];
 
-AlcoholCodes.breweryCodes = {
-    "NO DATA": 0,
-    이백집: 1
-};
+AlcoholCodes.breweryCodes = [{ idx: 0, name: "NO DATA" }];
 
 AlcoholCodes.classifyCodes = [
     {
@@ -32,13 +29,18 @@ var AlcoholFunction = AlcoholFunction || {};
 
 AlcoholFunction.getBreweryCode = function(name) {
     let output = 0;
-    if (AlcoholCodes.breweryCodes.hasOwnProperty(name)) {
-        output = AlcoholCodes.breweryCodes[name];
+    let breweryIdx = AlcoholCodes.breweryCodes.findIndex(element => {
+        return element.name === name;
+    });
+    if (breweryIdx != -1) {
+        output = AlcoholCodes.breweryCodes[breweryIdx].idx;
     } else {
-        AlcoholCodes.breweryCodes[name] = Object.keys(
-            AlcoholCodes.breweryCodes
-        ).length;
-        output = AlcoholCodes.breweryCodes[name];
+        let newBrewery = {
+            idx: AlcoholCodes.breweryCodes.length,
+            name: name
+        };
+        fbMain.addBrewery(newBrewery);
+        output = newBrewery.idx;
     }
     return output;
 };

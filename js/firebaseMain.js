@@ -30,6 +30,8 @@ FirebaseMain.prototype.setLogin = function() {
     $("#modalLogin").modal("hide");
     document.getElementById("dvLoginSelect").style.display = "none";
     document.getElementById("dvAlcAdder").style.display = "block";
+
+    this.getBrewery();
 };
 
 FirebaseMain.prototype.setLogOut = function() {
@@ -57,3 +59,34 @@ FirebaseMain.prototype.onGoogleBtnClick = function() {
             console.error("인증 상태 설정 중 에러 발생", error);
         });
 };
+
+FirebaseMain.prototype.getBrewery = function() {
+    var dbData = [{ idx: 0, name: "NO DATA" }];
+    this.db
+        .collection("brewery")
+        .get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                dbData.push(doc.data());
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+    AlcoholCodes.breweryCodes = dbData;
+};
+
+FirebaseMain.prototype.addBrewery = function(_brewery) {
+    this.db
+        .collection("brewery")
+        .add(_brewery)
+        .catch(function(error) {
+            console.log("Error adding documents: ", error);
+        });
+
+    this.getBrewery();
+};
+
+FirebaseMain.prototype.getAlcohols = function() {};
+
+FirebaseMain.prototype.addAlcohols = function(alc) {};
